@@ -1,0 +1,86 @@
+<swal
+  #addProductSwal
+  title="Add Product"
+  [showConfirmButton]="false"
+  background="#1f2f55"
+  (dismiss)="handelDismiss($event)"
+  [swalOptions]="{ color: 'white' }">
+  <div *swalPortal="undefined">
+    <form
+      class="text-black flex flex-col justify-center items-center"
+      [formGroup]="product"
+      (ngSubmit)="addProduct(); addProductSwal.close()">
+      <div class="mb-3 xl:w-96">
+        <label
+          class="form-label inline-block mb-2 text-xl font-semibold text-white"
+          for="name"
+          >Name:
+        </label>
+        <input
+          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
+          id="name"
+          type="text"
+          placeholder="Insert product name"
+          formControlName="name" />
+      </div>
+
+      <div class="mb-3 xl:w-96">
+        <label
+          class="form-label inline-block mb-2 text-xl font-semibold text-white"
+          for="inInventory"
+          >In inventory:
+        </label>
+        <input
+          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
+          id="inInventory"
+          type="number"
+          min="0"
+          placeholder="Insert product stock"
+          formControlName="inInventory" />
+      </div>
+
+      <div class="mb-3 xl:w-96">
+        <label
+          class="form-label inline-block mb-2 text-xl font-semibold text-white"
+          for="min"
+          >Min:
+        </label>
+        <input
+          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
+          id="min"
+          type="number"
+          min="0"
+          placeholder="Insert minimum to buy"
+          formControlName="min" />
+      </div>
+
+      <div class="mb-3 xl:w-96">
+        <label
+          class="form-label inline-block mb-2 text-xl font-semibold text-white"
+          for="max"
+          >Max:
+        </label>
+        <input
+          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
+          id="max"
+          type="number"
+          min="0"
+          placeholder="Insert maximum to buy"
+          formControlName="max" />
+      </div>
+      <button
+        class="text-2xl text-white px-5 py-2 m-5 bg-green-700 focus:outline-none hover:scale-105 hover:bg-green-600 rounded disabled:opacity-20 disabled:pointer-events-none transition"
+        type="submit"
+        [disabled]="product.status === 'INVALID'">
+        Create
+      </button>
+    </form>
+
+    <span
+      class="text-red-500 text-xs font-extrabold"
+      *ngIf="product.errors"
+      >{{ product.getError('err') }}</span
+    >
+  </div>
+</swal>
+<button [swal]="addProductSwal">Add product</button>

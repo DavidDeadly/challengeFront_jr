@@ -1,0 +1,24 @@
+<div class="bg-slate-300 m-2 border border-black rounded-sm p-4 relative">
+  <h2 class="text-xl font-bold">{{ product.name | uppercase }}</h2>
+  <ng-icon
+    class="text-red-500 text-2xl absolute right-2 top-2 hover:text-red-700 transition-all hover:text-3xl hover:cursor-pointer"
+    name="bootstrapTrash"
+    [swal]="{
+      title:
+        'Are you sure want to delete this ' +
+        product.name.toUpperCase() +
+        ' product??',
+      text: 'Can not be recovered!!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete it!',
+      confirmButtonColor: 'red',
+      cancelButtonText: 'Keep it!',
+      cancelButtonColor: 'gray',
+      background: '#1f2f55',
+      color: 'white'
+    }"
+    (confirm)="deleteProduct(product.id)"></ng-icon>
+  <h3>In Inventory:</h3>
+  <span class="font-medium">{{ product.inInventory }}</span>
+</div>
