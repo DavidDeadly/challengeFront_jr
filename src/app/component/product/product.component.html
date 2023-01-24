@@ -1,5 +1,55 @@
 <div class="bg-slate-300 m-2 border border-black rounded-sm p-4 relative">
-  <h2 class="text-xl font-extrabold">{{ product.name | uppercase }}</h2>
+  <swal
+    #updateMinimum
+    title="Update product N° {{ product.id.substring(0, 4) }} minimum"
+    input="number"
+    [inputAttributes]="{
+      min: '0'
+    }"
+    background="#1f2f55"
+    [swalOptions]="{ color: 'white' }"
+    cancelButtonText="keep it!"
+    cancelButtonColor="gray"
+    [showCancelButton]="true"
+    confirmButtonText="Save!"
+    confirmButtonColor="green"
+    (confirm)="updateMin(product.id, $event)">
+  </swal>
+  <swal
+    #updateMaximum
+    title="Update product N° {{ product.id.substring(0, 4) }} maximum"
+    input="number"
+    [inputAttributes]="{
+      min: '0'
+    }"
+    background="#1f2f55"
+    [swalOptions]="{ color: 'white' }"
+    cancelButtonText="keep it!"
+    cancelButtonColor="gray"
+    [showCancelButton]="true"
+    confirmButtonText="Save!"
+    confirmButtonColor="green"
+    (confirm)="updateMax(product.id, $event)">
+  </swal>
+  <span class="text-xs font-medium absolute bottom-0 left-2">{{
+    product.id | slice : 0 : 4
+  }}</span>
+  <h2
+    [swal]="{
+      title: 'Update product N°' + product.id.substring(0, 4) + ' name',
+      input: 'text',
+      background: '#1f2f55',
+      color: 'white',
+      cancelButtonText: 'Keep it!',
+      cancelButtonColor: 'gray',
+      showCancelButton: true,
+      confirmButtonText: 'Save!',
+      confirmButtonColor: 'green'
+    }"
+    (confirm)="updateName(product.id, $event)"
+    class="text-xl font-extrabold hover:cursor-pointer hover:scale-110 hover:opacity-60 transition">
+    {{ product.name | uppercase }}
+  </h2>
   <ng-icon
     class="text-red-500 text-2xl absolute right-2 top-2 hover:text-red-700 transition-all hover:text-3xl hover:cursor-pointer"
     name="bootstrapTrash"
@@ -23,14 +73,37 @@
   <ng-icon
     class="text-blue-500 text-2xl absolute left-2 top-2 hover:text-blue-700 transition-all hover:text-3xl hover:cursor-pointer"
     name="bootstrapBagHeart"></ng-icon>
-  <h3>In Inventory:</h3>
-  <span class="font-bold">{{ product.inInventory }}</span>
+  <div
+    class="hover:cursor-pointer hover:scale-110 hover:opacity-60 transition"
+    [swal]="{
+      title: 'Update product N°' + product.id.substring(0, 4) + ' stock',
+      input: 'number',
+      inputAttributes: {
+        min: '0'
+      },
+      background: '#1f2f55',
+      color: 'white',
+      cancelButtonText: 'Keep it!',
+      cancelButtonColor: 'gray',
+      showCancelButton: true,
+      confirmButtonText: 'Save!',
+      confirmButtonColor: 'green'
+    }"
+    (confirm)="updateInInventory(product.id, $event)">
+    <h3>In Inventory:</h3>
+    <span class="font-bold">{{ product.inInventory }}</span>
+  </div>
   <div class="flex justify-center gap-7">
     <span
-      >Min: <strong class="font-bold">{{ product.min }}</strong></span
-    >
+      class="hover:cursor-pointer hover:scale-110 hover:opacity-60 transition"
+      [swal]="updateMinimum">
+      Min:
+      <strong class="font-bold">{{ product.min }}</strong>
+    </span>
     <span
-      >Max: <strong class="font-bold">{{ product.max }}</strong></span
-    >
+      class="hover:cursor-pointer hover:scale-110 hover:opacity-60 transition"
+      [swal]="updateMaximum">
+      Max: <strong class="font-bold">{{ product.max }}</strong>
+    </span>
   </div>
 </div>

@@ -9,3 +9,12 @@ export interface Product {
 export interface ProductDB extends Product {
   id: string;
 }
+
+export interface ProductEdit {
+  inventoryID: string;
+  productID: string;
+  name?: string;
+  inInventory?: number;
+  min?: number;
+  max?: number;
+}

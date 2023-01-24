@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProductDB } from '../../models/Inventory';
+import { ProductDB, ProductEdit } from '../../models/Inventory';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -29,5 +29,9 @@ export class RequestsService {
 
   addProduct(product: ProductDB) {
     return this.http.post<ProductDB>(`${environment.API_URL}product`, product);
+  }
+
+  updateProduct(product: ProductEdit) {
+    return this.http.put(`${environment.API_URL}product`, product);
   }
 }
