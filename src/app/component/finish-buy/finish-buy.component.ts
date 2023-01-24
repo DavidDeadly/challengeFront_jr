@@ -85,6 +85,8 @@ export class FinishBuyComponent implements OnInit {
       productsBuy: this.cartProducts,
     };
 
+    console.log(newBuy);
+
     this.requests.buyProducts(newBuy).subscribe({
       next: _res => {
         this.clearCart();

@@ -1,0 +1,27 @@
+<div class="p-4 m-2 bg-slate-300 rounded">
+  <h1 class="text-xl font-bold">{{ buy.clientName }}</h1>
+  <h2>{{ buy.idType }} | {{ buy.clientId }}</h2>
+  <h3>{{ buy.date | date : 'medium' }}</h3>
+  <swal
+    #showProductsBuys
+    width="200px"
+    title="ID | QT"
+    background="#1f2f55"
+    [swalOptions]="{ color: 'white' }">
+    <div *swalPortal="undefined">
+      <div *ngFor="let products of buy.products">
+        <div>
+          <h4>
+            {{ products.productId | slice : 0 : 4 | uppercase }} :
+            {{ products.quantity }}
+          </h4>
+        </div>
+      </div>
+    </div>
+  </swal>
+  <button
+    class="bg-slate-400 bg-opacity-50 p-3 hover:bg-teal-400 transition rounded-md"
+    [swal]="showProductsBuys">
+    Products
+  </button>
+</div>

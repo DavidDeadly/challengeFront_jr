@@ -15,6 +15,8 @@ import { ProductDetailedComponent } from './component/product-detailed/product-d
 import { CreateProductComponent } from './component/create-product/create-product.component';
 import { CartComponent } from './component/cart/cart.component';
 import { FinishBuyComponent } from './component/finish-buy/finish-buy.component';
+import { BuysComponent } from './component/buys/buys.component';
+import { BuyComponent } from './component/buy/buy.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { FinishBuyComponent } from './component/finish-buy/finish-buy.component'
     CreateProductComponent,
     CartComponent,
     FinishBuyComponent,
+    BuysComponent,
+    BuyComponent,
   ],
   imports: [
     BrowserModule,

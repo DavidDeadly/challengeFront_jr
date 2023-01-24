@@ -32,7 +32,11 @@ export interface Buy {
   productsBuy: Array<ProductBuy>;
 }
 
-export interface BuyDB extends Buy {
+export interface BuyDB {
   buyId: string;
   date: string;
+  clientId: string;
+  idType: string;
+  clientName: string;
+  products: Array<ProductBuy>;
 }
