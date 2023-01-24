@@ -18,3 +18,8 @@ export interface ProductEdit {
   min?: number;
   max?: number;
 }
+
+export interface ProductBuy {
+  productId: string;
+  quantity: number;
+}

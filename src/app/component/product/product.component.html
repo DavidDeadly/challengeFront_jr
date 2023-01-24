@@ -71,6 +71,21 @@
     (confirm)="deleteProduct(product.id)"></ng-icon>
 
   <ng-icon
+    [swal]="{
+      title:
+        'Are you sure want to buy this ' +
+        product.name.toUpperCase() +
+        ' product??',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Of course!!',
+      confirmButtonColor: '#3B82F5',
+      cancelButtonText: 'Not now',
+      cancelButtonColor: 'gray',
+      background: '#1f2f55',
+      color: 'white'
+    }"
+    (confirm)="addProductToCart(product.id)"
     class="text-blue-500 text-2xl absolute left-2 top-2 hover:text-blue-700 transition-all hover:text-3xl hover:cursor-pointer"
     name="bootstrapBagHeart"></ng-icon>
   <div
