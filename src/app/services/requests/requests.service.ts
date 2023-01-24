@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Buy, BuyDB, ProductDB, ProductEdit } from '../../models/Inventory';
+import {
+  Buy,
+  BuyDB,
+  Product,
+  ProductDB,
+  ProductEdit,
+} from '../../models/Inventory';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -33,8 +39,8 @@ export class RequestsService {
     });
   }
 
-  addProduct(product: ProductDB) {
-    return this.http.post<ProductDB>(`${environment.API_URL}product`, product);
+  addProduct(product: Product) {
+    return this.http.post<Product>(`${environment.API_URL}product`, product);
   }
 
   updateProduct(product: ProductEdit) {
