@@ -26,4 +26,8 @@ export class RequestsService {
       body: deleteCom,
     });
   }
+
+  addProduct(product: ProductDB) {
+    return this.http.post<ProductDB>(`${environment.API_URL}product`, product);
+  }
 }

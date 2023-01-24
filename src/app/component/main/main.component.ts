@@ -6,6 +6,7 @@ import {
   SwalPortalTarget,
   SwalPortalTargets,
 } from '@sweetalert2/ngx-sweetalert2';
+import { StateService } from 'src/app/services/state/state.service';
 
 @Component({
   selector: 'app-main',
@@ -17,17 +18,19 @@ export class MainComponent implements OnInit {
 
   constructor(
     private requests: RequestsService,
+    private state: StateService,
     public readonly swalTargets: SwalPortalTargets
   ) {}
 
   ngOnInit(): void {
+    this.state.products.subscribe(nextProds => (this.products = nextProds));
     this.getProducts();
   }
 
   getProducts(): void {
     this.requests
       .getAllProducts(environment.INVENTORY_ID)
-      .subscribe(res => (this.products = res));
+      .subscribe(res => this.state.products.next(res));
   }
 
   addProduct() {
