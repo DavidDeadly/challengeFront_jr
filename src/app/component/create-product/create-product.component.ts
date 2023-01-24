@@ -57,10 +57,7 @@ export class CreateProductComponent {
           return this.requests.getAllProducts(environment.INVENTORY_ID);
         })
       )
-      .subscribe(res => {
-        console.log(res);
-        this.state.products.next(res);
-      });
+      .subscribe(res => this.state.products.next(res));
   }
 
   isProductEnabled() {

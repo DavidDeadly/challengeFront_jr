@@ -1,11 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Product, ProductDB } from 'src/app/models/Inventory';
+import { Component, OnInit } from '@angular/core';
+import { ProductDB } from 'src/app/models/Inventory';
 import { RequestsService } from 'src/app/services/requests/requests.service';
 import { environment } from 'src/environments/environment.development';
-import {
-  SwalPortalTarget,
-  SwalPortalTargets,
-} from '@sweetalert2/ngx-sweetalert2';
+import { SwalPortalTargets } from '@sweetalert2/ngx-sweetalert2';
 import { StateService } from 'src/app/services/state/state.service';
 
 @Component({

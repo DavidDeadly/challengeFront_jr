@@ -34,13 +34,6 @@ export class FinishBuyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.requests.getAllProducts(environment.INVENTORY_ID).subscribe(res => {
-    //   this.cartProducts = res.map(r => ({
-    //     productId: r.id,
-    //     quantity: 15,
-    //   }));
-    //   this.productsBuy = res;
-    // });
     this.cart.productsBuy
       .pipe(
         mergeMap(res => {
@@ -84,8 +77,6 @@ export class FinishBuyComponent implements OnInit {
       idClient: clientInfo!.idClient,
       productsBuy: this.cartProducts,
     };
-
-    console.log(newBuy);
 
     this.requests.buyProducts(newBuy).subscribe({
       next: _res => {
