@@ -8,6 +8,8 @@ import { Product, ProductDB } from 'src/app/models/Inventory';
 })
 export class ProductsComponent {
   @Input() products: Array<ProductDB> = [];
+  @Input()
+  showIcons!: boolean;
 
   constructor() {}
 }

@@ -1,0 +1,125 @@
+<swal
+  #buyCart
+  title="Client Info"
+  [showConfirmButton]="false"
+  background="#1f2f55"
+  (dismiss)="handelDismiss($event)"
+  [swalOptions]="{ color: 'white' }">
+  <div *swalPortal="undefined">
+    <form
+      class="text-black flex flex-col justify-center items-center"
+      [formGroup]="client"
+      (ngSubmit)="buyCartProducts(); buyCart.close()">
+      <div class="mb-3 xl:w-96">
+        <label
+          class="form-label inline-block mb-2 text-xl font-semibold text-white"
+          for="name"
+          >Name:
+        </label>
+        <input
+          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
+          id="name"
+          type="text"
+          placeholder="Insert client name"
+          formControlName="clientName" />
+      </div>
+
+      <div class="mb-3 xl:w-96">
+        <label
+          class="form-label inline-block mb-2 text-xl font-semibold text-white"
+          for="idType"
+          >ID Type:
+        </label>
+        <select
+          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
+          id="idType"
+          formControlName="idType">
+          <option
+            value=""
+            [selected]="true"
+            [disabled]="true"
+            [hidden]="true">
+            Select a ID Type
+          </option>
+          <option value="CC">CC</option>
+          <option value="TI">TI</option>
+        </select>
+      </div>
+
+      <div class="mb-3 xl:w-96">
+        <label
+          class="form-label inline-block mb-2 text-xl font-semibold text-white"
+          for="ID"
+          >ID:
+        </label>
+        <input
+          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
+          id="ID"
+          type="text"
+          placeholder="Insert ID"
+          formControlName="idClient" />
+      </div>
+      <button
+        class="text-2xl text-white px-5 py-2 m-5 bg-green-700 focus:outline-none focus:outline-green-400 hover:scale-105 hover:bg-green-600 rounded disabled:opacity-20 disabled:pointer-events-none transition"
+        type="submit"
+        [disabled]="client.status === 'INVALID'">
+        Buy
+      </button>
+    </form>
+  </div>
+</swal>
+
+<div class="text-center">
+  <div>
+    <header class="max-w-5xl w-4/5 m-auto mt-10 relative flex justify-center">
+      <button
+        [swal]="{
+          title: 'Are you sure about clearing the whole cart??',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, clear!',
+          confirmButtonColor: 'red',
+          cancelButtonText: 'Keep it!',
+          cancelButtonColor: 'gray',
+          background: '#1f2f55',
+          color: 'white'
+        }"
+        (confirm)="clearCart()"
+        class="text-2xl text-right font-bold py-5 px-3 bg-red-300 shadow shadow-red-800 rounded-xl absolute bottom-2 left-0 hover:scale-105 transition hover:bg-red-400">
+        Clear Cart
+      </button>
+      <h2 class="text-3xl font-black mt-5 mb-5">ID | Quantity</h2>
+      <button
+        [swal]="buyCart"
+        class="text-2xl text-right font-bold py-5 px-3 bg-green-300 shadow shadow-green-800 rounded-xl absolute bottom-2 right-0 hover:scale-105 transition hover:bg-green-400">
+        Buy Cart
+      </button>
+    </header>
+    <div
+      class="bg-slate-200 grid grid-cols-4 gap-4 m-auto max-w-5xl w-4/5 shadow-xl border rounded border-black border-opacity-20">
+      <div *ngFor="let cartProduct of cartProducts">
+        <h3
+          [swal]="{
+            title: 'Are you sure about removing this product from your buy??',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Remove it!',
+            confirmButtonColor: 'red',
+            cancelButtonText: 'Keep it!',
+            cancelButtonColor: 'gray',
+            background: '#1f2f55',
+            color: 'white'
+          }"
+          (confirm)="removeProductFromCart(cartProduct.productId)"
+          class="text-xl font-bold p-2 m-2 bg-slate-300 rounded hover:bg-red-400 hover:cursor-pointer transition">
+          {{ cartProduct.productId | slice : 0 : 4 | uppercase }} :
+          {{ cartProduct.quantity }}
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h2 class="text-3xl font-black mt-5 mb-2">Products Details</h2>
+    <app-products [products]="productsBuy"></app-products>
+  </div>
+</div>

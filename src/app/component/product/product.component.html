@@ -1,7 +1,9 @@
 <div class="bg-slate-300 m-2 border border-black rounded-sm p-4 relative">
   <swal
     #updateMinimum
-    title="Update product N° {{ product.id.substring(0, 4) }} minimum"
+    title="Update product N° {{
+      product.id.substring(0, 4).toUpperCase()
+    }} minimum"
     input="number"
     [inputAttributes]="{
       min: '0'
@@ -17,7 +19,9 @@
   </swal>
   <swal
     #updateMaximum
-    title="Update product N° {{ product.id.substring(0, 4) }} maximum"
+    title="Update product N° {{
+      product.id.substring(0, 4).toUpperCase()
+    }} maximum"
     input="number"
     [inputAttributes]="{
       min: '0'
@@ -32,11 +36,14 @@
     (confirm)="updateMax(product.id, $event)">
   </swal>
   <span class="text-xs font-medium absolute bottom-0 left-2">{{
-    product.id | slice : 0 : 4
+    product.id | slice : 0 : 4 | uppercase
   }}</span>
   <h2
     [swal]="{
-      title: 'Update product N°' + product.id.substring(0, 4) + ' name',
+      title:
+        'Update product N°' +
+        product.id.substring(0, 4).toUpperCase() +
+        ' name',
       input: 'text',
       background: '#1f2f55',
       color: 'white',
@@ -51,6 +58,7 @@
     {{ product.name | uppercase }}
   </h2>
   <ng-icon
+    *ngIf="showIcons"
     class="text-red-500 text-2xl absolute right-2 top-2 hover:text-red-700 transition-all hover:text-3xl hover:cursor-pointer"
     name="bootstrapTrash"
     [swal]="{
@@ -71,6 +79,7 @@
     (confirm)="deleteProduct(product.id)"></ng-icon>
 
   <ng-icon
+    *ngIf="showIcons"
     [swal]="{
       title:
         'Are you sure want to buy this ' +
@@ -91,7 +100,10 @@
   <div
     class="hover:cursor-pointer hover:scale-110 hover:opacity-60 transition"
     [swal]="{
-      title: 'Update product N°' + product.id.substring(0, 4) + ' stock',
+      title:
+        'Update product N°' +
+        product.id.substring(0, 4).toUpperCase() +
+        ' stock',
       input: 'number',
       inputAttributes: {
         min: '0'

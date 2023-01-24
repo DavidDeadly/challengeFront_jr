@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class ProductComponent {
   @Input() product!: ProductDB;
+  @Input()
+  showIcons!: boolean;
 
   constructor(
     private state: StateService,
@@ -50,10 +52,9 @@ export class ProductComponent {
       .subscribe(_res => {
         this.state.deleteProduct(productID);
         Swal.fire({
-          text: `The product with the ID ${productID.substring(
-            0,
-            4
-          )} was succesfully deleted`,
+          text: `The product with the ID ${productID
+            .substring(0, 4)
+            .toUpperCase()} was succesfully deleted`,
           icon: 'success',
           background: '#1f2f55',
           color: 'white',
@@ -75,7 +76,9 @@ export class ProductComponent {
         next: () => {
           this.state.updateProductName(id, name);
           Swal.fire({
-            text: `The name N° ${id.substring(0, 4)} was succesfully updated!`,
+            text: `The name N° ${id
+              .substring(0, 4)
+              .toUpperCase()} was succesfully updated!`,
             icon: 'success',
             background: '#1f2f55',
             color: 'white',
@@ -85,10 +88,9 @@ export class ProductComponent {
         },
         error: () => {
           Swal.fire({
-            text: `Was not possible to update the name N° ${id.substring(
-              0,
-              4
-            )}`,
+            text: `Was not possible to update the name N° ${id
+              .substring(0, 4)
+              .toUpperCase()}`,
             icon: 'error',
             background: '#1f2f55',
             color: 'white',
@@ -111,7 +113,9 @@ export class ProductComponent {
         next: () => {
           this.state.updateProductInInventory(id, inInventory);
           Swal.fire({
-            text: `The stock N° ${id.substring(0, 4)} was succesfully updated!`,
+            text: `The stock N° ${id
+              .substring(0, 4)
+              .toUpperCase()} was succesfully updated!`,
             icon: 'success',
             background: '#1f2f55',
             color: 'white',
@@ -121,10 +125,9 @@ export class ProductComponent {
         },
         error: () => {
           Swal.fire({
-            text: `Was not possible to update the stock N° ${id.substring(
-              0,
-              4
-            )}`,
+            text: `Was not possible to update the stock N° ${id
+              .substring(0, 4)
+              .toUpperCase()}`,
             icon: 'error',
             background: '#1f2f55',
             color: 'white',

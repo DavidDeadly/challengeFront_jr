@@ -1,6 +1,8 @@
 <div
   class="bg-slate-200 grid grid-cols-4 gap-4 m-auto max-w-5xl w-4/5 shadow-xl border rounded border-black border-opacity-20">
   <div *ngFor="let product of products">
-    <app-product [product]="product"></app-product>
+    <app-product
+      [product]="product"
+      [showIcons]="showIcons"></app-product>
   </div>
 </div>

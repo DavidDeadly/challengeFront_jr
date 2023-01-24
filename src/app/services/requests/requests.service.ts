@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProductDB, ProductEdit } from '../../models/Inventory';
+import { Buy, BuyDB, ProductDB, ProductEdit } from '../../models/Inventory';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -13,6 +13,12 @@ export class RequestsService {
   getAllProducts(inventoryID: string): Observable<Array<ProductDB>> {
     return this.http.get<Array<ProductDB>>(
       `${environment.API_URL}products?inventoryID=${inventoryID}`
+    );
+  }
+
+  getAllBuys(inventoryID: string): Observable<Array<BuyDB>> {
+    return this.http.get<Array<BuyDB>>(
+      `${environment.API_URL}buys?inventoryID=${inventoryID}`
     );
   }
 
@@ -33,5 +39,9 @@ export class RequestsService {
 
   updateProduct(product: ProductEdit) {
     return this.http.put(`${environment.API_URL}product`, product);
+  }
+
+  buyProducts(buy: Buy) {
+    return this.http.post(`${environment.API_URL}buy`, buy);
   }
 }

@@ -17,7 +17,14 @@ export class CartService {
     this.productsBuy.next(productsBuy);
   }
 
+  removeFromCart(stringId: string) {
+    const productsBuy = this.productsBuy.getValue();
+    const newProductsBuy = productsBuy.filter(p => p.productId !== stringId);
+
+    this.productsBuy.next(newProductsBuy);
+  }
+
   clearCart() {
-    this.productsBuy = new BehaviorSubject<Array<ProductBuy>>([]);
+    this.productsBuy.next([]);
   }
 }

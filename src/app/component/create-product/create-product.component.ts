@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SwalPortalTargets } from '@sweetalert2/ngx-sweetalert2';
-import { delay, map, mergeMap } from 'rxjs';
-import { Product, ProductDB } from 'src/app/models/Inventory';
+import { delay, mergeMap } from 'rxjs';
 import { RequestsService } from 'src/app/services/requests/requests.service';
 import { StateService } from 'src/app/services/state/state.service';
 import {
