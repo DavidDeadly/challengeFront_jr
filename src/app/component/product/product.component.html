@@ -1,5 +1,5 @@
 <div class="bg-slate-300 m-2 border border-black rounded-sm p-4 relative">
-  <h2 class="text-xl font-bold">{{ product.name | uppercase }}</h2>
+  <h2 class="text-xl font-extrabold">{{ product.name | uppercase }}</h2>
   <ng-icon
     class="text-red-500 text-2xl absolute right-2 top-2 hover:text-red-700 transition-all hover:text-3xl hover:cursor-pointer"
     name="bootstrapTrash"
@@ -19,6 +19,18 @@
       color: 'white'
     }"
     (confirm)="deleteProduct(product.id)"></ng-icon>
+
+  <ng-icon
+    class="text-blue-500 text-2xl absolute left-2 top-2 hover:text-blue-700 transition-all hover:text-3xl hover:cursor-pointer"
+    name="bootstrapBagHeart"></ng-icon>
   <h3>In Inventory:</h3>
-  <span class="font-medium">{{ product.inInventory }}</span>
+  <span class="font-bold">{{ product.inInventory }}</span>
+  <div class="flex justify-center gap-7">
+    <span
+      >Min: <strong class="font-bold">{{ product.min }}</strong></span
+    >
+    <span
+      >Max: <strong class="font-bold">{{ product.max }}</strong></span
+    >
+  </div>
 </div>

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgIconsModule } from '@ng-icons/core';
-import { bootstrapTrash } from '@ng-icons/bootstrap-icons';
+import { bootstrapTrash, bootstrapBagHeart } from '@ng-icons/bootstrap-icons';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -29,7 +29,7 @@ import { CreateProductComponent } from './component/create-product/create-produc
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgIconsModule.withIcons({ bootstrapTrash }),
+    NgIconsModule.withIcons({ bootstrapTrash, bootstrapBagHeart }),
     SweetAlert2Module.forRoot(),
   ],
   providers: [],
