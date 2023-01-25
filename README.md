@@ -11,4 +11,6 @@ Primero instale todas las dependencias con su package manager de preferencia ya 
 ```docker run -d -p 8080:8080 daviddeadly/challenge_jr```
 
 ## Code coverage
+![CopyQ hfNYuy](https://user-images.githubusercontent.com/88601542/214480588-47e32246-4863-4f5b-bb33-a885a1a9fa24.png)
+
 ![Screenshot from 2023-01-24 23-22-11](https://user-images.githubusercontent.com/88601542/214479518-a2165139-8f0e-4a5e-a8ef-ac625c618619.png)
