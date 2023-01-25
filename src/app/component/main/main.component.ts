@@ -29,8 +29,4 @@ export class MainComponent implements OnInit {
       .getAllProducts(environment.INVENTORY_ID)
       .subscribe(res => this.state.products.next(res));
   }
-
-  addProduct() {
-    alert('Product added!');
-  }
 }

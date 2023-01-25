@@ -42,4 +42,15 @@ describe('MainComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it("should contain 'Products and Buys'", () => {
+    const title = fixture.nativeElement.querySelector(
+      'h1'
+    ) as HTMLHeadingElement;
+    const buysLink = fixture.nativeElement.querySelector(
+      'a'
+    ) as HTMLAnchorElement;
+    expect(title.textContent).toContain('Products');
+    expect(buysLink.textContent).toContain('Buys');
+  });
 });
